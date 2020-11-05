@@ -69,6 +69,19 @@ public class SingleLinkedList {
 
     // reverse the linked list RECURSIVELY
     public void reverse() {
-        // homework
+        head.next = reverse(head.next);
+    }
+
+    public ListNode reverse(ListNode node) {
+        if (node == null || node.next == null) {
+            return node;
+        }
+
+        ListNode current = reverse(node.next);
+
+        node.next.next = node;
+        node.next = null;
+
+        return current;
     }
 }
